@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace CodeBlog_1
 {
@@ -8,58 +7,48 @@ namespace CodeBlog_1
     {
         static void Main(string[] args)
         {
-
-        int[] array = new int[10];
-            int i = 0;
-            while (i < 10)
+            int input = int.Parse(Console.ReadLine());
+            if (input < 10 && input > 0)
             {
-                array[i] = i;
-                Console.WriteLine(array[i]);
-                i++;
+                Console.WriteLine("Smaller");
             }
-            List<int> list = new List<int>();
-            list.Add(0);
-            list.Add(1);
-            list.Add(2);
-            list.AddRange(new int[] { 0, 1 });
-
-            C[] cs = new C[10];
-            List<C> css = new List<C>();
-
-            Console.WriteLine(list[0]);
-            Console.WriteLine(Days.Mon);
-            List<string> lst5 = new List<string>() 
+            else if (input < 0)
             {
-                "AMD", "TOP", "YOU", "UNDERSTAND", "?" 
-            };
-            int[] amd = new int[5] 
-            {
-                1, 2, 3, 4, 5
-            };
-            int ling = 0;
-            while (ling < 5) 
-            {
-                Console.WriteLine(lst5[ling]);
-                Console.WriteLine(amd[ling]);
-                ling++;
+                Console.WriteLine("Lower than zero");
             }
-            Console.WriteLine(lng5.first);
-            Console.WriteLine(lng5.second);
-            Console.WriteLine(lng5.third);
-            Console.WriteLine(lng5.fourth);
-            Console.WriteLine(lng5.fifth);
-        }
-        public class C
-        {
+            else
+            {
+                Console.WriteLine("Bigger");
+            }
+
+            string s = "Hi!";
+            if (s.Equals("hi"))
+            {
+                Console.WriteLine("YES");
+            }
+            else
+            {
+                Console.WriteLine("NO");
+            }
+
+            switch (input)
+            {
+                case 999:
+                    Console.WriteLine("WTF");
+                    break;
+                case 777:
+                    Console.WriteLine("Oh God");
+                    break;
+                case 666:
+                    Console.WriteLine("You are a fucking demon!");
+                    break;
+                default:
+                    Console.WriteLine("And what?");
+                    break;
+            }
+            Console.WriteLine(input == 333 ? "Yeah" :"OOPS");
+
 
         }
-        enum lng5
-        {
-            first,
-            second,
-            third,
-            fourth,
-            fifth
-        };
     }
 }
