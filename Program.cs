@@ -22,8 +22,8 @@ namespace CodeBlog_1
             //int huis = Int32.Parse("42");
             //Console.WriteLine(jojo);
 
-            int i = 1;
-            string s = "str" + i.ToString();
+            int.TryParse("123", out int z);
+            Console.WriteLine(z);
 
             //byte b = 42;
             //int o = b;
