@@ -1,33 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace CodeBlog_1
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
-            //string s = "1";
-            //int i = (string)s;
-            //int j = (byte)5;
-            //double d = j;
-            //int k = (double)d;
-            //int i = 5;
-            //int j = 2048;
-            //byte b = (byte)i;
-            //byte bb = (byte)j;
-            //Console.WriteLine(bb);
 
-            //string s = "2048";
-            //int jojo = Convert.ToInt32(s);
-            //int huis = Int32.Parse("42");
-            //Console.WriteLine(jojo);
+        int[] array = new int[10];
+            int i = 0;
+            while (i < 10)
+            {
+                array[i] = i;
+                Console.WriteLine(array[i]);
+                i++;
+            }
+            List<int> list = new List<int>();
+            list.Add(0);
+            list.Add(1);
+            list.Add(2);
 
-            int.TryParse("123", out int z);
-            Console.WriteLine(z);
-
-            //byte b = 42;
-            //int o = b;
-
+            Console.WriteLine(list[0]);
+            Console.WriteLine(Days.Mon);
         }
     }
 }
