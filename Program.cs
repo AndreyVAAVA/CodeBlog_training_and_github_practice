@@ -7,78 +7,45 @@ namespace CodeBlog_1
     {
         static void Main(string[] args)
         {
-            int input = int.Parse(Console.ReadLine());
-            if (input < 10 && input > 0)
+            var list = new List<int>();
+            var rnd = new Random();
+            for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine("Smaller");
+                list.Add(rnd.Next(0,100));
+                continue;
+                Console.WriteLine("AAAH");
             }
-            else if (input < 0)
+            var g = 0;
+            while (g < 10)
             {
-                Console.WriteLine("Lower than zero");
-            }
-            else
-            {
-                Console.WriteLine("Bigger");
-            }
-
-            string s = "Hi!";
-            if (s.Equals("hi"))
-            {
-                Console.WriteLine("YES");
-            }
-            else
-            {
-                Console.WriteLine("NO");
-            }
-
-            switch (input)
-            {
-                case 999:
-                    Console.WriteLine("WTF");
+                Console.WriteLine(g);
+                g++;
+                if(g == 5)
+                {
                     break;
-                case 777:
-                    Console.WriteLine("Oh God");
-                    break;
-                case 666:
-                    Console.WriteLine("You are a fucking demon!");
-                    break;
-                default:
-                    Console.WriteLine("And what?");
-                    break;
+                }
             }
-            Console.WriteLine(input == 333 ? "Yeah" :"OOPS");
-
-            int rl1 = int.Parse(Console.ReadLine());
-            int rl2 = int.Parse(Console.ReadLine());
-            int rl3 = int.Parse(Console.ReadLine());
-            int rl;
-            if(rl1 > rl2 && rl1 > rl3)
+            var z = 0;
+            do
             {
-                rl = rl1;
+                Console.WriteLine("Yep, Anders Colsefni");
+                z++;
             }
-            else if(rl2 > rl1 && rl2 > rl3)
-            {
-                rl = rl2;
-            }
-            else
-            {
-                rl = rl3;
-            }
-            Console.WriteLine(rl);
+            while (z < list.Count);
 
-            float rlch = rl % 2;
-
-            switch (rlch)
+            foreach (var item in list)
             {
-                case 0:
-                    Console.WriteLine("Чётное число");
-                    break;
-                default:
-                    Console.WriteLine("Не чётное число");
-                    break;
+                Console.WriteLine(item);
             }
-
-            Console.WriteLine(rl<100?"Меньше 100" : "Больше 100, ну или 100");
+            int[,] array = new int[10, 10];
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    array[i, j] = rnd.Next(0,100);
+                    Console.WriteLine(array[i,j]);
+                }
+            }
         }
     }
 }
