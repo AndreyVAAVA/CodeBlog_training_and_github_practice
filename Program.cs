@@ -48,7 +48,37 @@ namespace CodeBlog_1
             }
             Console.WriteLine(input == 333 ? "Yeah" :"OOPS");
 
+            int rl1 = int.Parse(Console.ReadLine());
+            int rl2 = int.Parse(Console.ReadLine());
+            int rl3 = int.Parse(Console.ReadLine());
+            int rl;
+            if(rl1 > rl2 && rl1 > rl3)
+            {
+                rl = rl1;
+            }
+            else if(rl2 > rl1 && rl2 > rl3)
+            {
+                rl = rl2;
+            }
+            else
+            {
+                rl = rl3;
+            }
+            Console.WriteLine(rl);
 
+            float rlch = rl % 2;
+
+            switch (rlch)
+            {
+                case 0:
+                    Console.WriteLine("Чётное число");
+                    break;
+                default:
+                    Console.WriteLine("Не чётное число");
+                    break;
+            }
+
+            Console.WriteLine(rl<100?"Меньше 100" : "Больше 100, ну или 100");
         }
     }
 }
