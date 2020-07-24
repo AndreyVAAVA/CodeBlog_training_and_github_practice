@@ -46,6 +46,49 @@ namespace CodeBlog_1
                     Console.WriteLine(array[i,j]);
                 }
             }
+
+            //HomeWork
+            var hw = new List<int>();
+            for (int i = 0; i < 15; i++)
+            {
+                string ghw = Console.ReadLine(); ;
+                if (int.TryParse(ghw, out int gg))
+                {
+                    hw.Add(gg);
+                }
+                else
+                {
+                    Console.WriteLine("Введите число, а не строку");
+                }
+            }
+            int sum = 0;
+            for (int i = 0; i < hw.Count; i++)
+            {
+                sum += hw[i];
+            }
+            Console.WriteLine(sum);
+
+            int minus = 0;
+            int l = 0;
+            while (l < hw.Count)
+            {
+                minus -= hw[l];
+                l++;
+            }
+            Console.WriteLine(minus);
+            int multip = 1;
+            int lm = 0;
+            do
+            {
+                multip *= hw[lm];
+                lm++;
+            }
+            while (lm < hw.Count);
+            Console.WriteLine(multip);
+            foreach (var item in hw)
+            {
+                Console.Write(item);
+            }
         }
     }
 }
