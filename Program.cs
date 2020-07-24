@@ -59,6 +59,8 @@ namespace CodeBlog_1
                 else
                 {
                     Console.WriteLine("Введите число, а не строку");
+                    string agn = Console.ReadLine();
+                    hw.Add(Convert.ToInt32(agn));
                 }
             }
             int sum = 0;
