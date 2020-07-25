@@ -5,10 +5,20 @@ namespace CodeBlog_1
 {
     public class Customer : Person
     {
-        public int ID { get; set; }
-        public Customer(string secondName, string name, int id) : base(secondName, name)
+        private int Money { get; set; }
+        public Customer(string secondName, string name, int money) : base(secondName, name)
         {
-            ID = id;
+            Money = money;
+        }
+
+        public int PC_Buy(int price)
+        {
+            Money = Money - price;
+            return price;
+        }
+        public int hm_we_have()
+        {
+            return Money;
         }
     }
 }
