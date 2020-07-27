@@ -3,7 +3,7 @@
 
 namespace CodeBlog_1
 {
-    public class Customer : Person
+    public class Customer : Human
     {
         private int Money { get; set; }
         public Customer(string secondName, string name, int money) : base(secondName, name)
@@ -19,6 +19,14 @@ namespace CodeBlog_1
         public int hm_we_have()
         {
             return Money;
+        }
+        public static bool operator <=(Customer customer, Customer customer2)
+        {
+            return customer.Money <= customer2.Money;
+        }
+        public static bool operator >=(Customer customer, Customer customer2)
+        {
+            return customer.Money >= customer2.Money;
         }
     }
 }
