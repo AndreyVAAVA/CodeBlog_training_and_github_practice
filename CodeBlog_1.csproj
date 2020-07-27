@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Apple.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Eating.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Product.cs" />
