@@ -1,5 +1,4 @@
-﻿using CodeBlog_1.NewFolder1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,17 +9,17 @@ namespace CodeBlog_1
 
         static void Main(string[] args)
         {
-            //var eating = new Eating<Apple>();
+            var cars = new List<ICar>();
+            cars.Add(new LadaSeven());
+            cars.Add(new BMWXSeven());
 
-            /*var p = new Product<int>("Apple", 100, 100);
-            var pp = new Product<decimal>("Banan", 10.1M, 11.1M);*/
-
-            /*var list = new List<int>();
-            var map = new Dictionary<int, string>();
-            map.Add(5, "Fifth");*/
-
-            RAM ddr4 = new RAM("Ballistix", 500, 32, 15, 63.4M);
-            var perf_per_doll = new Consuming<RAM>();
+            foreach (var car in cars)
+            {
+                Console.WriteLine(car.Move(200));
+            }
+            Cyborg cyborg = new Cyborg();
+            Console.WriteLine(((ICar)cyborg).Move(100));
+            Console.WriteLine(((IPerson)cyborg).Move(100));
         }
     }
 }
