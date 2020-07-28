@@ -44,9 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apple.cs" />
+    <Compile Include="NewFolder1\Component.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Eating.cs" />
     <Compile Include="Human.cs" />
+    <Compile Include="NewFolder1\Consuming.cs" />
+    <Compile Include="NewFolder1\CPU.cs" />
+    <Compile Include="NewFolder1\GC.cs" />
+    <Compile Include="NewFolder1\RAM.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
