@@ -6,7 +6,7 @@ namespace CodeBlog_1
     {
         public void Create()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("AU");
         }
 
         int ICar.Move(int distance)

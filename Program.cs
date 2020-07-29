@@ -9,7 +9,7 @@ namespace CodeBlog_1
 
         static void Main(string[] args)
         {
-            var cars = new List<ICar>();
+            /*var cars = new List<ICar>();
             cars.Add(new LadaSeven());
             cars.Add(new BMWXSeven());
 
@@ -19,7 +19,11 @@ namespace CodeBlog_1
             }
             Cyborg cyborg = new Cyborg();
             Console.WriteLine(((ICar)cyborg).Move(100));
-            Console.WriteLine(((IPerson)cyborg).Move(100));
+            Console.WriteLine(((IPerson)cyborg).Move(100));*/
+            SSD disk = new SSD();
+            disk.SIZE = 512;
+            Console.WriteLine(disk.Resorce(6000000));
+            Console.WriteLine(disk.Speed(3500));
         }
     }
 }
