@@ -9,21 +9,73 @@ namespace CodeBlog_1
 
         static void Main(string[] args)
         {
-            /*var cars = new List<ICar>();
-            cars.Add(new LadaSeven());
-            cars.Add(new BMWXSeven());
+            /*int a = 200000000;
+            int b = 200000000;
+            int c = checked(a * b);*/
 
-            foreach (var car in cars)
+            /*try
             {
-                Console.WriteLine(car.Move(200));
+                var i = 5;
+                var j = i / 0;
+                Console.WriteLine(j);
             }
-            Cyborg cyborg = new Cyborg();
-            Console.WriteLine(((ICar)cyborg).Move(100));
-            Console.WriteLine(((IPerson)cyborg).Move(100));*/
-            SSD disk = new SSD();
-            disk.SIZE = 512;
-            Console.WriteLine(disk.Resorce(6000000));
-            Console.WriteLine(disk.Speed(3500));
+            catch(DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("DivideByZeroException");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exception");
+                throw;
+
+            }
+            finally
+            {
+                Console.WriteLine("Application closed");
+            }*/
+
+            while (true)
+            {
+                var input = Console.ReadLine();
+                if (int.TryParse(input, out int result))
+                {
+                    Console.WriteLine(result);
+                }
+                else
+                {
+                    Console.WriteLine("Введите целое число");
+                }
+            }
+            int i = 5;
+            try
+            {
+                throw new MyOwnException();
+            }
+            catch (MyOwnException ex)
+            {
+                Console.WriteLine("My Own Excpetion");
+            }
+            catch (DivideByZeroException ex) when (i == 5)
+            {
+                Console.WriteLine("Деление на 0 (i = 5)");
+                throw;
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("Деление на ноль");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Work finished");
+            }
+            finally
+            {
+                Console.WriteLine("Work ended");
+            }
+
+
         }
     }
 }
