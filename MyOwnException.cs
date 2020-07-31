@@ -2,14 +2,15 @@
 
 namespace CodeBlog_1
 {
-    class MyOwnException : Exception
+    class MyOwnException : DivideByZeroException
     {
-        public MyOwnException() : base("this is my exception")
+        public MyOwnException() : base("MyException")
         {
+            Console.WriteLine("yes");
         }
+
         public MyOwnException(string message) : base(message)
         {
-
         }
     }
 }

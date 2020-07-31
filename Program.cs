@@ -13,7 +13,7 @@ namespace CodeBlog_1
             int b = 200000000;
             int c = checked(a * b);*/
 
-            /*try
+            try
             {
                 var i = 5;
                 var j = i / 0;
@@ -34,9 +34,9 @@ namespace CodeBlog_1
             finally
             {
                 Console.WriteLine("Application closed");
-            }*/
+            }
 
-            while (true)
+            /*while (true)
             {
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out int result))
@@ -47,6 +47,7 @@ namespace CodeBlog_1
                 {
                     Console.WriteLine("Введите целое число");
                 }
+                break;
             }
             int i = 5;
             try
@@ -73,9 +74,42 @@ namespace CodeBlog_1
             finally
             {
                 Console.WriteLine("Work ended");
+            }*/
+            var gaming = new PC();
+            gaming.Cooler = 0;
+            gaming.CPU = 0;
+            gaming.DriveDevice = 0;
+            gaming.GraphicsCard = 0;
+            gaming.Motherboard = 0;
+            gaming.PowerSupply = 0;
+            gaming.RAM = 0;
+            try
+            {
+                var cpu = 1 / gaming.CPU;
+                var cooler = 1 / gaming.Cooler;
+                var drivedevice = 1 / gaming.DriveDevice;
+                var graphicscard = 1 / gaming.DriveDevice;
+                throw new MyOwnException();
             }
-
-
+            catch (MyOwnException ex)
+            {
+                Console.WriteLine("ЭЭЭЭ");
+                throw ex;
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("AAAA");
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("BBBB");
+                throw ex;
+            }
+            finally
+            {
+                Console.WriteLine("Ты дурак, как может быть 0 вещей, учитывая, что без этого комп не будет работать");
+            }
         }
     }
 }
