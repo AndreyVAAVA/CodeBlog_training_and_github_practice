@@ -3,39 +3,119 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CodeBlog_1
 {
     public delegate void MyDelegate();
-    partial class Program
+    class Program
     {
+        public static object locker = new object();
+
+        public static int i1 = 0;
+        public static int i2 = 0;
+
+        static void M1()
+        {
+            for(int i = 0; i <= i1; i++)
+            {
+
+            }
+        }
+        static void M2()
+        {
+            for (int i = 0; i >= i1; i--)
+            {
+
+            }
+        }
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
+            #region thread
+            /*Thread thread = new Thread(new ThreadStart(DoWork));
+            thread.Start();
 
-            var user_input = Console.ReadLine();
-            using (var write_to_file = new StreamWriter("test.txt", true))
+            Thread thread2 = new Thread(new ParameterizedThreadStart(DoWork2));
+            thread2.Start(int.MaxValue);
+            int j = 0;
+            for (int i = 0; i < int.MaxValue; i++)
             {
-                write_to_file.WriteLine(user_input);
-            }
-            Console.WriteLine("Хотите ли прочитать данные из файла(пишите да или нет(только lowercase))?");
-            var command = Console.ReadLine();
-            if(command == "да")
-            {
-                using (var read_file = new StreamReader("test.txt", true))
+                j++;
+                if (j % 10000 == 0)
                 {
-                    Console.WriteLine(read_file.ReadToEnd()); 
+                    Console.WriteLine("Main");
+                }
+            }*/
+            #endregion
+
+            #region async
+            /*Console.WriteLine("Start");
+            DoWorkAsync();
+            Console.WriteLine("Continue");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Main");
+            }
+            Console.WriteLine("End");*/
+            #endregion
+            var result = SaveFileAsync();
+            Console.ReadLine();
+            Console.WriteLine(result.Result);
+        }
+
+        static async Task<bool> SaveFileAsync()
+        {
+            var result = await Task<bool>.Run(() => SaveFile());
+            return result;
+        }
+
+        static bool SaveFile()
+        {
+            lock (locker)
+            {
+                var rnd = new Random();
+                var text = "";
+                for(int i = 0; i < 1000; i++)
+                {
+                    text += rnd.Next();
+                }
+                using (var sw = new StreamWriter("sync.txt", false, Encoding.UTF8))
+                {
+                    sw.WriteLine();
+                }
+                return true;
+            }
+
+        }
+
+        static async Task DoWorkAsync()
+        {
+            Console.WriteLine("Start Async");
+            await Task.Run(() => DoWork());
+            Console.WriteLine("End Async");
+            
+        }
+
+        static void DoWork()
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("DoWork");
+            }
+        }
+        static void DoWork2(object max)
+        {
+            int j = 0;
+            for (int i = 0; i < (int)max; i++)
+            {
+                j++;
+                if (j % 10000 == 0)
+                {
+                    Console.WriteLine("DoWork 2");
                 }
             }
-            else if(command == "нет")
-            {
-                Console.WriteLine("Ок, понял, не буду");
-            }
-            else
-            {
-                Console.WriteLine("Сорян, ты сам виноват, неправильно ты написал");
-            }
-
         }
     }
 
