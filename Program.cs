@@ -13,24 +13,29 @@ namespace CodeBlog_1
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            using (var sw = new StreamWriter("test.txt", false, Encoding.UTF8))
+            var user_input = Console.ReadLine();
+            using (var write_to_file = new StreamWriter("test.txt", true))
             {
-                sw.Write("Hello World");
-                sw.WriteLine("Hello, User");
+                write_to_file.WriteLine(user_input);
             }
-            using (var sr = new StreamReader("test.txt", Encoding.UTF8))
+            Console.WriteLine("Хотите ли прочитать данные из файла(пишите да или нет(только lowercase))?");
+            var command = Console.ReadLine();
+            if(command == "да")
             {
-                while (!sr.EndOfStream)
+                using (var read_file = new StreamReader("test.txt", true))
                 {
-                    Console.WriteLine(sr.ReadLine() + " end of string");
+                    Console.WriteLine(read_file.ReadToEnd()); 
                 }
-
-                sr.DiscardBufferedData();
-                sr.BaseStream.Seek(0, SeekOrigin.Begin);
-
-                var text = sr.ReadToEnd();
-                Console.WriteLine(text);
             }
+            else if(command == "нет")
+            {
+                Console.WriteLine("Ок, понял, не буду");
+            }
+            else
+            {
+                Console.WriteLine("Сорян, ты сам виноват, неправильно ты написал");
+            }
+
         }
     }
 
