@@ -12,111 +12,85 @@ namespace CodeBlog_1
     class Program
     {
         public static object locker = new object();
-
-        public static int i1 = 0;
-        public static int i2 = 0;
-
-        static void M1()
-        {
-            for(int i = 0; i <= i1; i++)
-            {
-
-            }
-        }
-        static void M2()
-        {
-            for (int i = 0; i >= i1; i--)
-            {
-
-            }
-        }
         static void Main(string[] args)
         {
-            #region thread
-            /*Thread thread = new Thread(new ThreadStart(DoWork));
-            thread.Start();
-
-            Thread thread2 = new Thread(new ParameterizedThreadStart(DoWork2));
-            thread2.Start(int.MaxValue);
-            int j = 0;
-            for (int i = 0; i < int.MaxValue; i++)
-            {
-                j++;
-                if (j % 10000 == 0)
-                {
-                    Console.WriteLine("Main");
-                }
-            }*/
-            #endregion
-
             #region async
-            /*Console.WriteLine("Start");
-            DoWorkAsync();
-            Console.WriteLine("Continue");
-
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine("Main");
-            }
-            Console.WriteLine("End");*/
-            #endregion
-            var result = SaveFileAsync();
+            /*var calc = new Perf_Calc();
+            var result = calc.PerfAsync();
             Console.ReadLine();
-            Console.WriteLine(result.Result);
+            Console.WriteLine(result.Result);*/
+            #endregion
+            #region thread
+            Thread thread = new Thread(Logo);
+            Thread thread2 = new Thread(Logo);
+            Thread thread3 = new Thread(Logo);
+
+            // Set the priority of threads 
+            thread.Priority = ThreadPriority.Highest;
+            thread3.Priority = ThreadPriority.BelowNormal;
+            thread3.Start();
+            thread.Start();
+            thread2.Start();
+            //thread.Abort();
+
+            // Display the priority of threads 
+            Console.WriteLine("The priority of thread is: {0}",
+                                              thread.Priority);
+
+            Console.WriteLine("The priority of thread2 is: {0}",
+                                              thread2.Priority);
+
+            Console.WriteLine("The priority of thread3 is: {0}",
+                                              thread3.Priority);
+            Thread T = new Thread(new ParameterizedThreadStart(Logo2));
+            T.Start("Extreme");
+            // Creating and initializing threads 
+            /*Thread T1 = new Thread(work);
+            Thread T2 = new Thread(work);
+            Thread T3 = new Thread(work);
+
+            // Set the priority of threads 
+            T2.Priority = ThreadPriority.Highest;
+            T3.Priority = ThreadPriority.BelowNormal;
+            T1.Start();
+            T2.Start();
+            T3.Start();
+
+            // Display the priority of threads 
+            Console.WriteLine("The priority of T1 is: {0}",
+                                              T1.Priority);
+
+            Console.WriteLine("The priority of T2 is: {0}",
+                                              T2.Priority);
+
+            Console.WriteLine("The priority of T3 is: {0}",
+                                              T3.Priority);*/
+        }
+        /*public static void work()
+        {
+
+            // Sleep for 1 second 
+            Thread.Sleep(1000);
+        }*/
+        /*public static void work()
+        {
+
+            // Sleep for 1 second 
+            Thread.Sleep(1000);
+        }*/
+        public static void Logo()
+        {
+            Console.WriteLine( "Nvidia" + "AMD" + "Intel");
+            Thread.Sleep(1000);
+        }
+        public static void Logo2(object max)
+        {
+            Console.WriteLine($"{max} Nvidia AMD Intel");
+            Thread.Sleep(1000);
         }
 
-        static async Task<bool> SaveFileAsync()
-        {
-            var result = await Task<bool>.Run(() => SaveFile());
-            return result;
-        }
 
-        static bool SaveFile()
-        {
-            lock (locker)
-            {
-                var rnd = new Random();
-                var text = "";
-                for(int i = 0; i < 1000; i++)
-                {
-                    text += rnd.Next();
-                }
-                using (var sw = new StreamWriter("sync.txt", false, Encoding.UTF8))
-                {
-                    sw.WriteLine();
-                }
-                return true;
-            }
-
-        }
-
-        static async Task DoWorkAsync()
-        {
-            Console.WriteLine("Start Async");
-            await Task.Run(() => DoWork());
-            Console.WriteLine("End Async");
-            
-        }
-
-        static void DoWork()
-        {
-            for(int i = 0; i < 10; i++)
-            {
-                Console.WriteLine("DoWork");
-            }
-        }
-        static void DoWork2(object max)
-        {
-            int j = 0;
-            for (int i = 0; i < (int)max; i++)
-            {
-                j++;
-                if (j % 10000 == 0)
-                {
-                    Console.WriteLine("DoWork 2");
-                }
-            }
-        }
+        #endregion
     }
 
 }
