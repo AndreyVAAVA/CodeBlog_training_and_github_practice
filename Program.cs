@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,36 +16,39 @@ namespace CodeBlog_1
     {
         static void Main(string[] args)
         {
-            const string ip = "127.0.0.1";
-            const int port = 8080;
-
-            var tcpEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
-
-            var tcpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            Console.WriteLine("Введите сообщение:");
-            var message = Console.ReadLine();
-
-            var data = Encoding.UTF8.GetBytes(message);
-
-            tcpSocket.Connect(tcpEndPoint);
-            tcpSocket.Send(data);
-
-            var buffer = new byte[256];
-            var size = 0;
-            var answer = new StringBuilder();
-
-            do
+            using(var context = new MyDBContext())
             {
-                size = tcpSocket.Receive(buffer);
-                answer.Append(Encoding.UTF8.GetString(buffer, 0, size));
+                var group = new Group()
+                {
+                    Name = "Rammstein",
+                    Year = 1994
+                };
+                var group2 = new Group()
+                {
+                    Name = "Linkin Park",
+                    Year = 1996
+                };
+
+                context.Groups.Add(group);
+                context.Groups.Add(group2);
+                context.SaveChanges();
+
+                var songs = new List<Song>
+                {
+                    new Song() { Name = "What I've Done", GroupId = group2.Id},
+                    new Song() { Name = "Given Up", GroupId = group2.Id},
+                    new Song() { Name = "Benzin", GroupId = group.Id}
+                };
+
+                context.Songs.AddRange(songs);
+                context.SaveChanges();
+
+                foreach (var song  in songs)
+                {
+                    Console.WriteLine($"Song name: {song.Name}, Year: {song.Group.Name}");
+                }
+                
             }
-            while (tcpSocket.Available > 0);
-
-            Console.WriteLine(answer.ToString());
-
-            tcpSocket.Shutdown(SocketShutdown.Both);
-            tcpSocket.Close();
         }
     }
 
