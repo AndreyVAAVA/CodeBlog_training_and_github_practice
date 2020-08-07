@@ -7,13 +7,13 @@ namespace CodeBlog_1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddGroupType : IMigrationMetadata
+    public sealed partial class GC : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddGroupType));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(GC));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008052337285_AddGroupType"; }
+            get { return "202008061930560_GC"; }
         }
         
         string IMigrationMetadata.Source

@@ -10,7 +10,9 @@ namespace CodeBlog_1
 
         }
 
-        public DbSet<Group> Groups { get; set; }
-        public DbSet<Song> Songs { get; set; }
+        /*public DbSet<Group> Groups { get; set; }
+        public DbSet<Song> Songs { get; set; }*/
+
+        public DbSet<GraphicsCard> GraphicsCards { get; set; }
     }
 }

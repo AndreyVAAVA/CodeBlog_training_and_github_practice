@@ -18,7 +18,7 @@ namespace CodeBlog_1
         {
             using(var context = new MyDBContext())
             {
-                var group = new Group()
+                /*var group = new Group()
                 {
                     Name = "Rammstein",
                     Year = 1994
@@ -46,8 +46,32 @@ namespace CodeBlog_1
                 foreach (var song  in songs)
                 {
                     Console.WriteLine($"Song name: {song.Name}, Year: {song.Group.Name}");
+                }*/
+
+                var card1 = new GraphicsCard()
+                {
+                    corp = "AMD",
+                    vendor = "Sapphire"
+                };
+
+                context.GraphicsCards.Add(card1);
+                context.SaveChanges();
+
+                Console.WriteLine($"Vendor of GC: {card1.vendor}, Corp of seller gpu: {card1.corp}, serial number: {card1.Id}");
+                context.GraphicsCards.Remove(card1);
+                context.SaveChanges();
+
+                // ключ по которому будем менять данные 
+                int key = 2;
+
+                // Вариант 1. Изменение записи. 
+                var item = context.GraphicsCards.Find(key); // найдем запись 
+                if (item != null)
+                {
+                    item.corp = "Nvidia";
+                    item.vendor = "ASUS ROG";
+                    context.SaveChanges();
                 }
-                
             }
         }
     }

@@ -53,10 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GraphicsCard.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="Migrations\202008052337285_AddGroupType.cs" />
-    <Compile Include="Migrations\202008052337285_AddGroupType.designer.cs">
-      <DependentUpon>202008052337285_AddGroupType.cs</DependentUpon>
+    <Compile Include="Migrations\202008061930560_GC.cs" />
+    <Compile Include="Migrations\202008061930560_GC.designer.cs">
+      <DependentUpon>202008061930560_GC.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDBContext.cs" />
@@ -69,8 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008052337285_AddGroupType.resx">
-      <DependentUpon>202008052337285_AddGroupType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008061930560_GC.resx">
+      <DependentUpon>202008061930560_GC.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
